@@ -1,0 +1,57 @@
+<link rel="import" href="/bower_components/polymer/polymer.html"/>
+
+<dom-module id="pd-drawer">
+    <template>
+        <div class$="{{mainClasses}}" on-click="toggleLeft">Toggle left</div>
+        <div class$="{{mainClasses}}" on-click="toggleRight">Toggle right</div>
+        <div class="main">
+            <content select="#main"></content>
+        </div>
+    </template>
+</dom-module>
+<script>
+    Polymer({
+        is: "pd-drawer",
+        properties: {
+            leftShow: {
+                type: Boolean,
+                value: true,
+                notify: true,
+            },
+            rightShow: {
+                type: Boolean,
+                value: true,
+                notify: true,
+            },
+            mainClasses: {
+                type: String,
+                computed: '_computeClass(leftShow, rightShow)'
+            },
+            drawerClass: {
+                type: String,
+                value: "",
+                reflectToAttribute: true,
+                notify: true,
+            },
+        },
+        toggleLeft: function () {
+            this.leftShow = true;
+            this.rightShow = !this.leftShow;
+        },
+        toggleRight: function () {
+            this.rightShow = true;
+            this.leftShow = !this.rightShow;
+        },
+        _computeClass: function (leftShow, rightShow) {
+            var classStr = [];
+            if (leftShow) {
+                classStr.push('leftShow');
+            }
+            if (rightShow) {
+                classStr.push('rightShow');
+            }
+            this.drawerClass = classStr.join(' ');
+            return this.drawerClass;
+        }
+    })
+</script>

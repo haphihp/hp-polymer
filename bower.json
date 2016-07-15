@@ -1,0 +1,14 @@
+{
+    "name": "hp-polymer",
+    "version": "0.0.1",
+    "dependencies": {
+        "polymer" : "Polymer/polymer#^1.0.3"
+    },
+    "ignore": [
+        "**/*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}
